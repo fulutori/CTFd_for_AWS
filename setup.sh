@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # CTFdのインストール
-git clone https://github.com/CTFd/CTFd.git /home/ctf/
+git clone https://github.com/CTFd/CTFd.git
 bash /home/ctf/CTFd/prepare.sh
 \cp -f /home/ctf/CTFd_for_AWS/serve.py /home/ctf/CTFd/serve.py
 
@@ -13,8 +13,8 @@ sudo apt install -y nginx
 
 # サーバー名を設定 ※環境に応じて書き換える
 server_name=localhost
-sed -i -e "3 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/default.config
-sed -i -e "4 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/default.config
+sed -i -e "3 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/default.conf
+sed -i -e "4 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/default.conf
 \cp -f /home/ctf/CTFd_for_AWS/nginx/default.conf /etc/nginx/conf.d/default.conf
 sudo systemctl restart nginx
 
@@ -22,8 +22,8 @@ sudo systemctl restart nginx
 sudo apt install -y letsencrypt
 sudo letsencrypt certonly --webroot --webroot-path /usr/share/nginx/html -d $server_name
 
-sed -i -e "5 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/ssl.config
-sed -i -e "6 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/ssl.config
+sed -i -e "5 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
+sed -i -e "6 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
 sed -i -e "21 s/ec2-[0-9]*-[0-9]*-[0-9]*-[0-9]*\.us-east-2\.compute\.amazonaws\.com/`cat /home/ctf/PublicDNS`/g" /etc/nginx/conf.d/ssl.conf
 \cp -f /home/ctf/CTFd_for_AWS/nginx/ssl.conf /etc/nginx/conf.d/ssl.conf
 sudo systemctl restart nginx
