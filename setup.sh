@@ -23,7 +23,7 @@ sudo systemctl restart nginx
 
 # ssl証明書の設定
 sudo apt install -y letsencrypt
-sudo letsencrypt certonly --webroot --webroot-path /usr/share/nginx/html -d $server_name
+sudo letsencrypt certonly --register-unsafely-without-email --agree-tos --webroot --webroot-path /usr/share/nginx/html -d $server_name
 
 sudo sed -i -e "5 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
 sudo sed -i -e "6 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
