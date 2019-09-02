@@ -27,7 +27,7 @@ if args.profile:
 	toolbar.init_app(app)
 	print(" * Flask profiling running at http://127.0.0.1:4000/flask-profiler/")
 
-with open('/home/ctf/PublicDNS', 'r') as f:
+with open('/home/ctf/CTFd_for_AWS/PublicDNS', 'r') as f:
 	HOST = f.read()
 
 app.run(debug=True, threaded=True, host=HOST, port=8000)
