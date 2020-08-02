@@ -30,7 +30,7 @@ sudo /home/ctf/certbot/certbot-auto certonly --standalone -d $server_name -m $em
 
 sudo sed -i -e "5 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
 sudo sed -i -e "6 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
-sudo sed -i -e "21 s/ec2-[0-9]*-[0-9]*-[0-9]*-[0-9]*\.[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9]*\.compute\.amazonaws\.com/`cat /home/ctf/CTFd_for_AWS/PublicDNS`/g" /etc/nginx/conf.d/ssl.conf
+sudo sed -i -e "21 s/ec2-[0-9]*-[0-9]*-[0-9]*-[0-9]*\.[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9]*\.compute\.amazonaws\.com/`cat /home/ctf/CTFd_for_AWS/PublicDNS`/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
 
 sudo cp -f /home/ctf/CTFd_for_AWS/nginx/ssl.conf /etc/nginx/conf.d/ssl.conf
 sudo sed -i -e "4 s/#//g" /etc/nginx/conf.d/default.conf
