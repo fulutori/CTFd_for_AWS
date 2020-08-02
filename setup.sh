@@ -43,4 +43,4 @@ sudo sed -i -e "4 s/#//g" /etc/nginx/conf.d/default.conf
 sudo systemctl start nginx
 
 screen -dmS ctfd
-screen -S ctfd -X stuff '/usr/bin/python3 /home/ctf/CTFd/serve.py'
+screen -S ctfd -X stuff '/usr/bin/python3 /home/ctf/CTFd/serve.py'`echo -ne '\015'`
