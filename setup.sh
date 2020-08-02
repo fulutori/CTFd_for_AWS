@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# 実行時はctfユーザーを作成しておく
-# sudo adduser ctf
-# sudo gpasswd -a ctf sudo
-# su - ctf
-
-
 # 各種設定 ※環境に応じて書き換える
 server_name=localhost
 email=admin@test.com
