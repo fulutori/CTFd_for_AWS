@@ -9,7 +9,7 @@ sudo apt -y upgrade
 
 # CTFdのインストール
 git clone https://github.com/CTFd/CTFd.git
-sudo apt install python3-pip
+sudo apt -y install python3-pip
 pip3 install -r /home/ctf/CTFd/requirements.txt
 sed -i -e "31 s/127\.0\.0\.1/0\.0\.0\.0/g" /home/ctf/CTFd/serve.py
 sed -i -e "31 s/args\.port/8000/g" /home/ctf/CTFd/serve.py
@@ -30,7 +30,7 @@ sudo /home/ctf/certbot/certbot-auto certonly --standalone -d $server_name -m $em
 
 sudo sed -i -e "5 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
 sudo sed -i -e "6 s/localhost/$server_name/g" /home/ctf/CTFd_for_AWS/nginx/ssl.conf
-sudo sed -i -e "21 s/ec2-[0-9]*-[0-9]*-[0-9]*-[0-9]*\.[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9]*\.compute\.amazonaws\.com/`cat /home/ctf/CTF_for_AWS/PublicDNS`/g" /etc/nginx/conf.d/ssl.conf
+sudo sed -i -e "21 s/ec2-[0-9]*-[0-9]*-[0-9]*-[0-9]*\.[0-9a-zA-Z]*-[0-9a-zA-Z]*-[0-9]*\.compute\.amazonaws\.com/`cat /home/ctf/CTFd_for_AWS/PublicDNS`/g" /etc/nginx/conf.d/ssl.conf
 
 sudo cp -f /home/ctf/CTFd_for_AWS/nginx/ssl.conf /etc/nginx/conf.d/ssl.conf
 sudo sed -i -e "4 s/#//g" /etc/nginx/conf.d/default.conf
